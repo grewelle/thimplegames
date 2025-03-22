@@ -1,3 +1,18 @@
+
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+
+initial = [['M','A','G','A','I','R','D','D'], ['M','A','D','A','E','R','E','F'], ['M','A','D','O','E','B','E','N']]
+end = [['M','A','G','A','I','R','D','D',''], ['M','A','D','A','','E','R','E','F'],['M','A','D','O','','E','B','E','N']]
+
+
+
+
 var movesNum = 0; // Number of moves initiated by the user
 var startTime; // Start time of the game
 var movescell = document.getElementById("movesnum"); // Element to display number of moves
@@ -35,8 +50,10 @@ function initPuzzle() {
     var puzzleElement = document.getElementById("puzzle");
     puzzleElement.innerHTML = "";
     tiles = [];
-    solvey = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
-
+    const randomInt = getRandomInt(0, initial.length-1);
+    solvey = initial[randomInt]
+    //solvey = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    
     for (var i = 0; i <= puzzleSize * puzzleSize - 2; i++) {
         var tile = document.createElement("li");
         tile.className = "Tile Tile" + solvey[i];
@@ -54,7 +71,8 @@ function initPuzzle() {
 // Check if the puzzle is solved
 var isPuzzleSolved = function() {
     for (var i = 0; i < tiles.length; i++) {
-        soln = ['A', 'B', 'C', 'D', '', 'E', 'F', 'G', 'H']
+        soln = end[randomInt]
+        //soln = ['A', 'B', 'C', 'D', '', 'E', 'F', 'G', 'H']
         var tile = tiles[i];
         var tileIndex = soln.indexOf(tile.innerHTML)+1;
         var expectedRow = Math.ceil(tileIndex / puzzleSize);
@@ -209,7 +227,7 @@ var updateTimer = function() {
 
 // Assign event listeners
 document.getElementById("newgame").onclick = function() {
-    randomizePuzzle();
+    initPuzzle();
     playSound(buttonPressedSound);
 };
 
