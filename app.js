@@ -5,11 +5,10 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-
-
-initial = [['M','A','G','A','I','R','D','D'], ['M','A','D','A','E','R','E','F'], ['M','A','D','O','E','B','E','N']]
-end = [['M','A','G','A','I','R','D','D',''], ['M','A','D','A','','E','R','E','F'],['M','A','D','O','','E','B','E','N']]
-
+  
+initial = [['M','A','G','A','I','R','D','D'], ['M','A','D','A','E','R','E','F'], ['M','A','D','O','E','B','E','N']];
+end = [['M','A','G','A','I','R','D','D',''], ['M','A','D','A','','E','R','E','F'],['M','A','D','O','','E','B','E','N']];
+const randomInt = getRandomInt(0, initial.length-1);
 
 
 
@@ -50,7 +49,7 @@ function initPuzzle() {
     var puzzleElement = document.getElementById("puzzle");
     puzzleElement.innerHTML = "";
     tiles = [];
-    const randomInt = getRandomInt(0, initial.length-1);
+    
     solvey = initial[randomInt]
     //solvey = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     
