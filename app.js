@@ -1,3 +1,4 @@
+const words = ["abs", "ace", "act", "add", "ado", "ads", "aft", "age", "ago", "aha", "ahi", "ahs", "aid", "ail", "aim", "air", "ale", "all", "alt", "amp", "and", "ant", "any", "ape", "app", "apt", "arc", "are", "ark", "arm", "art", "ash", "ask", "asp", "ass", "ate", "ats", "auk", "awe", "awl", "awn", "axe", "aye", "ays", "bad", "bae", "bag", "bah", "bam", "ban", "bar", "bat", "bay", "bed", "bee", "beg", "bet", "bib", "bid", "big", "bin", "bio", "bit", "boa", "bob", "bod", "bog", "boo", "bop", "bot", "bow", "box", "boy", "bra", "bro", "bub", "bud", "bug", "bum", "bun", "bur", "bus", "but", "buy", "bye", "bys", "cab", "cad", "cam", "can", "cap", "car", "cat", "caw", "cee", "chi", "cig", "cis", "cob", "cod", "cog", "con", "coo", "cop", "cot", "cow", "cox", "coy", "cry", "cub", "cud", "cue", "cum", "cup", "cut", "dab", "dad", "dam", "dan", "dap", "day", "dee", "den", "dew", "dib", "did", "die", "dig", "dim", "din", "dip", "dit", "doc", "doe", "dog", "doh", "don", "dot", "dow", "dox", "dry", "dub", "dud", "due", "dug", "duh", "duo", "dye", "ear", "eat", "ebb", "eco", "eek", "eel", "eff", "efs", "eft", "egg", "ego", "elf", "elk", "elm", "els", "emo", "ems", "emu", "end", "ens", "eon", "era", "ere", "err", "ess", "eta", "eve", "ewe", "eye", "fab", "fad", "fam", "fan", "far", "fat", "fax", "fed", "fee", "few", "fib", "fie", "fig", "fin", "fir", "fit", "fix", "flu", "fly", "fob", "foe", "fog", "foo", "for", "fox", "fro", "fry", "fun", "fur", "gab", "gad", "gag", "gal", "gap", "gar", "gas", "gay", "gee", "gel", "gem", "get", "gif", "gig", "gin", "gob", "god", "goo", "got", "gum", "gun", "gut", "guy", "gym", "had", "hag", "hah", "haj", "ham", "has", "hat", "haw", "hay", "hem", "hen", "her", "hes", "hew", "hex", "hey", "hid", "him", "hip", "his", "hit", "hob", "hoe", "hog", "hop", "hot", "how", "hub", "hue", "hug", "huh", "hum", "hut", "ice", "ick", "icy", "ids", "ifs", "ilk", "ill", "imp", "ink", "inn", "ins", "ion", "ire", "irk", "ism", "its", "ivy", "jab", "jag", "jam", "jar", "jaw", "jay", "jee", "jet", "jib", "jig", "jin", "job", "joe", "jog", "jot", "joy", "jug", "jut", "kay", "keg", "key", "kid", "kin", "kit", "lab", "lad", "lag", "lap", "las", "lat", "law", "lax", "lay", "led", "lee", "leg", "lei", "let", "lib", "lid", "lie", "lip", "lit", "lob", "log", "loo", "lop", "lot", "low", "lox", "lug", "lux", "lye", "mac", "mad", "mag", "man", "map", "mar", "mas", "mat", "maw", "max", "may", "med", "meg", "meh", "men", "met", "mew", "mic", "mid", "mix", "mob", "mod", "mol", "mom", "moo", "mop", "mow", "mud", "mug", "mum", "mut", "nab", "nag", "nah", "nap", "naw", "nay", "net", "new", "nib", "nil", "nip", "nit", "nix", "nod", "nog", "nor", "not", "now", "nub", "nun", "nut", "oaf", "oak", "oar", "oat", "odd", "ode", "off", "oft", "ohm", "ohs", "oil", "old", "ole", "one", "ons", "oof", "ops", "opt", "orb", "orc", "ore", "org", "ors", "our", "out", "ova", "owe", "owl", "own", "pad", "pal", "pan", "pap", "par", "pat", "paw", "pay", "pea", "pec", "pee", "peg", "pen", "pep", "per", "pet", "pew", "phi", "pho", "pic", "pie", "pig", "pin", "pip", "pit", "ply", "pod", "pom", "poo", "pop", "pot", "pow", "pox", "pro", "pry", "psi", "pub", "pug", "pun", "pup", "pur", "pus", "put", "qis", "rad", "rag", "rah", "ram", "ran", "rap", "rat", "raw", "ray", "red", "ref", "rep", "rev", "rho", "rib", "rid", "rig", "rim", "rip", "rob", "rod", "roe", "rot", "row", "rub", "rue", "rug", "rum", "run", "rut", "rye", "sac", "sad", "sag", "sap", "sat", "saw", "sax", "say", "sea", "see", "set", "sew", "sex", "she", "shy", "sic", "sim", "sin", "sip", "sir", "sis", "sit", "six", "ski", "sky", "sly", "sob", "sod", "sol", "son", "sop", "sot", "sow", "sox", "soy", "spa", "spy", "sty", "sub", "sue", "sum", "sun", "sup", "tab", "tad", "tag", "tan", "tap", "tar", "tat", "tau", "tax", "tea", "tee", "ten", "the", "thy", "tic", "tie", "tin", "tip", "tis", "tit", "toe", "tom", "ton", "too", "top", "tot", "tow", "toy", "try", "tub", "tug", "tux", "two", "ugh", "ump", "ums", "ups", "urn", "use", "van", "vat", "vax", "vee", "veg", "vet", "vex", "via", "vie", "vim", "vow", "wad", "wag", "wan", "war", "was", "wax", "way", "web", "wed", "wee", "wen", "wet", "who", "why", "wig", "win", "wit", "wiz", "woe", "wok", "won", "woo", "wow", "wry", "xis", "yah", "yak", "yam", "yap", "yaw", "yay", "yea", "yen", "yep", "yes", "yet", "yew", "yin", "yip", "you", "yow", "yum", "yup", "zag", "zap", "zas", "zee", "zen", "zig", "zip", "zit"];
 
 
 function getRandomInt(min, max) {
@@ -6,10 +7,9 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   
-initial = [['M','A','G','A','I','R','D','D'], ['M','A','D','A','E','R','E','F'], ['M','A','D','O','E','B','E','N']];
-end = [['M','A','G','A','I','R','D','D',''], ['M','A','D','A','','E','R','E','F'],['M','A','D','O','','E','B','E','N']];
-const randomInt = getRandomInt(0, initial.length-1);
-
+initial = [['M','A','G','A','I','R','D','D',''], ['M','A','D','A','E','R','E','F',''], ['M','A','D','O','E','B','E','N',''], ['A','B','C','D','E','F','G','H','']];
+end = [['M','A','G','A','I','R','D','D',''], ['M','A','D','A','','E','R','E','F'],['M','A','D','O','','E','B','E','N'], ['A','B','C','D','E','F','G','H','']];
+var counting = 0;
 
 
 var movesNum = 0; // Number of moves initiated by the user
@@ -49,10 +49,11 @@ function initPuzzle() {
     var puzzleElement = document.getElementById("puzzle");
     puzzleElement.innerHTML = "";
     tiles = [];
+    lightIndices = [];
     
-    solvey = initial[randomInt]
+    solvey = initial[counting%initial.length];
     //solvey = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-    
+   
     for (var i = 0; i <= puzzleSize * puzzleSize - 2; i++) {
         var tile = document.createElement("li");
         tile.className = "Tile Tile" + solvey[i];
@@ -69,20 +70,159 @@ function initPuzzle() {
 
 // Check if the puzzle is solved
 var isPuzzleSolved = function() {
+    
     for (var i = 0; i < tiles.length; i++) {
-        soln = end[randomInt]
-        //soln = ['A', 'B', 'C', 'D', '', 'E', 'F', 'G', 'H']
+        soln = end[counting%end.length];
+        //soln = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', '']
         var tile = tiles[i];
-        var tileIndex = soln.indexOf(tile.innerHTML)+1;
-        var expectedRow = Math.ceil(tileIndex / puzzleSize);
-        var expectedCol = tileIndex % puzzleSize || puzzleSize;
+        lightIndices = [];
+        //if (soln[i] !== tile.innerHTML){
+         //   return false;
+        //}
+
+        p1 = '';
+        p2 = '';
+        p3 = '';
+        p4 = '';
+        p5 = '';
+        p6 = '';
+        p7 = '';
+        p8 = '';
+        p9 = '';
+        for (var u = 0; u < tiles.length; u++) {
+            if (parseInt(tiles[u].style.gridRow) === 1 && parseInt(tiles[u].style.gridColumn) === 1){
+                p1 = tiles[u].innerHTML;
+            }
+            else if (parseInt(tiles[u].style.gridRow) === 1 && parseInt(tiles[u].style.gridColumn) === 2){
+                p2 = tiles[u].innerHTML;
+            }
+            else if (parseInt(tiles[u].style.gridRow) === 1 && parseInt(tiles[u].style.gridColumn) === 3){
+                p3 = tiles[u].innerHTML;
+            }
+            else if (parseInt(tiles[u].style.gridRow) === 2 && parseInt(tiles[u].style.gridColumn) === 1){
+                p4 = tiles[u].innerHTML;
+            }
+            else if (parseInt(tiles[u].style.gridRow) === 2 && parseInt(tiles[u].style.gridColumn) === 2){
+                p5 = tiles[u].innerHTML;
+            }
+            else if (parseInt(tiles[u].style.gridRow) === 2 && parseInt(tiles[u].style.gridColumn) === 3){
+                p6 = tiles[u].innerHTML;
+            }
+            else if (parseInt(tiles[u].style.gridRow) === 3 && parseInt(tiles[u].style.gridColumn) === 1){
+                p7 = tiles[u].innerHTML;
+            }
+            else if (parseInt(tiles[u].style.gridRow) === 3 && parseInt(tiles[u].style.gridColumn) === 2){
+                p8 = tiles[u].innerHTML;
+            }
+            else {
+                p9 = tiles[u].innerHTML;
+            }
+
+        }
+        
+        if (words.includes((p1+p2+p3).toLowerCase())) {
+            lightIndices.push(0);
+            lightIndices.push(1);
+            lightIndices.push(2);
+        }
+        if (words.includes((p4+p5+p6).toLowerCase())) {
+            lightIndices.push(3);
+            lightIndices.push(4);
+            lightIndices.push(5);
+        }
+        if (words.includes((p7+p8+p9).toLowerCase())) {
+            lightIndices.push(6);
+            lightIndices.push(7);
+            lightIndices.push(8);
+        }
+        if (words.includes((p1+p4+p7).toLowerCase())) {
+            lightIndices.push(0);
+            lightIndices.push(3);
+            lightIndices.push(6);
+        }
+        if (words.includes((p2+p5+p8).toLowerCase())) {
+            lightIndices.push(1);
+            lightIndices.push(4);
+            lightIndices.push(7);
+        }
+        if (words.includes((p3+p6+p9).toLowerCase())) {
+            lightIndices.push(2);
+            lightIndices.push(5);
+            lightIndices.push(8);
+        }
+        if (words.includes((p1+p5+p9).toLowerCase())) {
+            lightIndices.push(0);
+            lightIndices.push(4);
+            lightIndices.push(8);
+        }
+        if (words.includes((p7+p5+p3).toLowerCase())) {
+            lightIndices.push(6);
+            lightIndices.push(4);
+            lightIndices.push(2);
+        }
+
+        const uniqueArray = [...new Set(lightIndices)];
+        const root = document.documentElement;
+        const purpColor = getComputedStyle(root).getPropertyValue('--accent-purple-dark-mute');
+
+        tiles.forEach(tile => {
+            const ro = parseInt(tile.style.gridRow);
+            const col = parseInt(tile.style.gridColumn);
+            var pos = 0;
+            if (ro === 1 && col ===1) {
+                pos = 0;
+            }
+            else if (ro === 1 && col === 2) {
+                pos = 1;
+            }
+            else if (ro === 1 && col === 3) {
+                pos = 2;
+            }
+            else if (ro === 2 && col === 1) {
+                pos = 3;
+            }
+            else if (ro === 2 && col === 2) {
+                pos = 4;
+            }
+            else if (ro === 2 && col === 3) {
+                pos = 5;
+            }
+            else if (ro === 3 && col === 1) {
+                pos = 6;
+            }
+            else if (ro === 3 && col === 2) {
+                pos = 7;
+            }
+            else {pos = 8;}
+      
+            if (uniqueArray.includes(pos)) {
+                tile.style.borderColor = 'white';
+            } 
+            else {
+                tile.style.borderColor = purpColor;
+            }
+          });
+        
+        const tileIndices = [];
+        for (let j = 0; j < soln.length; j++){
+            if (soln[j] === tile.innerHTML){
+                tileIndices.push(j+1);
+            }
+        }
+        var expectedPosit = [];
+        for (let k = 0; k<tileIndices.length;k++){
+            expectedRow = Math.ceil(tileIndices[k]/puzzleSize)
+            expectedCol = tileIndices[k]%puzzleSize || puzzleSize
+            expectedPosit.push([expectedRow, expectedCol]);
+        }
         var currentRow = parseInt(tile.style.gridRow);
         var currentCol = parseInt(tile.style.gridColumn);
-        //alert(tileIndex);
+        var currentPosit = [currentRow, currentCol];
 
-        if (currentRow !== expectedRow || currentCol !== expectedCol) {
-            return false;
+        if (!expectedPosit.some(row => row.length === currentPosit.length && row.every((value, index) => value === currentPosit[index]))){
+            return False;
         }
+
     }
     return true;
 };
@@ -226,6 +366,7 @@ var updateTimer = function() {
 
 // Assign event listeners
 document.getElementById("newgame").onclick = function() {
+    counting++;
     initPuzzle();
     playSound(buttonPressedSound);
 };
