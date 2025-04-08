@@ -16,6 +16,9 @@ var movesNum = 0; // Number of moves initiated by the user
 var startTime; // Start time of the game
 var movescell = document.getElementById("movesnum"); // Element to display number of moves
 var timerDisplay = document.getElementById("timer"); // Element to display the timer
+var wordsSolnDisplay = document.getElementById("totalwords");
+const root = document.documentElement;
+const purpColor = getComputedStyle(root).getPropertyValue('--accent-purple-dark-mute');
 
 
 var tiles = [];
@@ -74,11 +77,15 @@ var isPuzzleSolved = function() {
     for (var i = 0; i < tiles.length; i++) {
         soln = end[counting%end.length];
         //soln = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', '']
+        const solnWords = [soln[0]+soln[1]+soln[2], soln[3]+soln[4]+soln[5], soln[6]+soln[7]+soln[8], soln[0]+soln[3]+soln[6], soln[1]+soln[4]+soln[7], soln[2]+soln[5]+soln[8], soln[0]+ soln[4]+ soln[8], soln[6]+ soln[4]+ soln[2]];
+        solnWords2 = solnWords.filter(word => word.length === 3);
+        
         var tile = tiles[i];
         lightIndices = [];
         //if (soln[i] !== tile.innerHTML){
          //   return false;
         //}
+        movesNum = 0 //count number of words 
 
         p1 = '';
         p2 = '';
@@ -124,46 +131,56 @@ var isPuzzleSolved = function() {
             lightIndices.push(0);
             lightIndices.push(1);
             lightIndices.push(2);
+            movesNum++;
         }
         if (words.includes((p4+p5+p6).toLowerCase())) {
             lightIndices.push(3);
             lightIndices.push(4);
             lightIndices.push(5);
+            movesNum++;
         }
         if (words.includes((p7+p8+p9).toLowerCase())) {
             lightIndices.push(6);
             lightIndices.push(7);
             lightIndices.push(8);
+            movesNum++;
         }
         if (words.includes((p1+p4+p7).toLowerCase())) {
             lightIndices.push(0);
             lightIndices.push(3);
             lightIndices.push(6);
+            movesNum++;
         }
         if (words.includes((p2+p5+p8).toLowerCase())) {
             lightIndices.push(1);
             lightIndices.push(4);
             lightIndices.push(7);
+            movesNum++;
         }
         if (words.includes((p3+p6+p9).toLowerCase())) {
             lightIndices.push(2);
             lightIndices.push(5);
             lightIndices.push(8);
+            movesNum++;
         }
         if (words.includes((p1+p5+p9).toLowerCase())) {
             lightIndices.push(0);
             lightIndices.push(4);
             lightIndices.push(8);
+            movesNum++;
         }
         if (words.includes((p7+p5+p3).toLowerCase())) {
             lightIndices.push(6);
             lightIndices.push(4);
             lightIndices.push(2);
+            movesNum++;
         }
 
+        movescell.innerHTML = movesNum; // Update # of moves displayed
+        wordsSolnDisplay.innerHTML = solnWords2.length;
+
         const uniqueArray = [...new Set(lightIndices)];
-        const root = document.documentElement;
-        const purpColor = getComputedStyle(root).getPropertyValue('--accent-purple-dark-mute');
+        
 
         tiles.forEach(tile => {
             const ro = parseInt(tile.style.gridRow);
@@ -241,9 +258,11 @@ var randomizePuzzle = function() {
 
     emptyRow = puzzleSize;
     emptyCol = puzzleSize;
+    lightIndices = [];
 
     // Reassign event listeners after rearranging tiles
     tiles.forEach(function(tile) {
+        tile.style.borderColor = purpColor;
         tile.onclick = moveTile;
     });
 
@@ -251,6 +270,7 @@ var randomizePuzzle = function() {
     timerDisplay.innerHTML = "0 seconds"; // Reset the timer display
     movesNum = 0; // Reset the moves count
     movescell.innerHTML = movesNum; // Update the moves count display
+    wordsSolnDisplay.innerHTML = ''
     clearInterval(timerInterval); // Clear any existing timer intervals
     timerStarted = false; // Reset the timer started flag
 };
@@ -315,8 +335,8 @@ var moveTile = function() {
         emptyRow = thisRow;
         emptyCol = thisCol;
 
-        movesNum++;
-        movescell.innerHTML = movesNum; // Update # of moves displayed
+        //movesNum++;
+        
 
         playSound(moveTileSound); // Play move tile sound
 
