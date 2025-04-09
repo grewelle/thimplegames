@@ -19,6 +19,9 @@ var timerDisplay = document.getElementById("timer"); // Element to display the t
 var wordsSolnDisplay = document.getElementById("totalwords");
 const root = document.documentElement;
 const purpColor = getComputedStyle(root).getPropertyValue('--accent-purple-dark-mute');
+const darkwhite = getComputedStyle(root).getPropertyValue('--dark-white');
+const midwhite = getComputedStyle(root).getPropertyValue('--mid-white');
+const lightwhite = getComputedStyle(root).getPropertyValue('--light-white');
 
 
 var tiles = [];
@@ -211,10 +214,23 @@ var isPuzzleSolved = function() {
                 pos = 7;
             }
             else {pos = 8;}
+
+            let posCount = 0;
+            for (let i = 0; i < lightIndices.length; i++) {
+                if (lightIndices[i] === pos) {
+                  posCount++;
+                }
+            }
       
-            if (uniqueArray.includes(pos)) {
-                tile.style.borderColor = 'white';
+            if (posCount === 3) {
+                tile.style.borderColor = lightwhite;
             } 
+            else if (posCount === 2) {
+                tile.style.borderColor = midwhite;
+            }
+            else if (posCount === 1) {
+                tile.style.borderColor = darkwhite;
+            }
             else {
                 tile.style.borderColor = purpColor;
             }

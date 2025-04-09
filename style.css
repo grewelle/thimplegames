@@ -15,6 +15,9 @@
   --accent-purple-dark: #85106b;
   --accent-purple-dark-mute: #4b2c44;
   --accent-purple-mute: #916287;
+  --dark-white: #787778;
+  --mid-white: #b5b2b4;
+  --light-white: #ffffff;
 }
 
 * {
