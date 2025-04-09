@@ -35,14 +35,24 @@ var timerStarted = false;
 var timerInterval;
 
 // Preload sounds
-let bgMusic = new Audio('assets/bg.mp3');
+//let bgMusic = new Audio('assets/bg.mp3');
 let moveTileSound = new Audio('assets/tile.mp3');
 let invalidMoveSound = new Audio('assets/error.mp3');
 let congratsSound = new Audio('assets/congrats.mp3');
 let buttonPressedSound = new Audio('assets/button.mp3');
 
+var myAudio = document.getElementById("myAudio");
+function popping() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+  }
+
+function togglePlay() {
+  return myAudio.paused ? myAudio.play() : myAudio.pause();
+};
+
 // Play background music on loop
-bgMusic.loop = true;
+myAudio.loop = true;
 
 // Function to play audio and handle rapid clicks
 function playSound(audio) {

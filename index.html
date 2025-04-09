@@ -19,7 +19,14 @@
         <div class="moves">Words: <span id="movesnum">0</span> / <span id="totalwords"></span></div>
         <div class="timer" id="timer">0 seconds</div>
         <button type="button" id="newgame">New Game</button>
+        <audio id="myAudio" src="assets/bg.mp3" preload="auto">
+        </audio>
+        <button onClick="togglePlay()">Music</button>
+       
       </div>
+    </div>
+    <div class="popup" onclick="popping()">Directions
+      <span class="popuptext" id="myPopup">The rools are thimple. Moove tiles to the empty space to rearrange the board. A Floople is created when all three letter strings going down or to the right form words. Play!</span>
     </div>
     <!-- Draggable DIV -->
     <div id="congratsFrame" class="congratsFrame">
