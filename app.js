@@ -13,9 +13,9 @@ var counting = 0;
 
 
 var movesNum = 0; // Number of moves initiated by the user
-var startTime; // Start time of the game
+var score = 0;
 var movescell = document.getElementById("movesnum"); // Element to display number of moves
-var timerDisplay = document.getElementById("timer"); // Element to display the timer
+var scorecell = document.getElementById("score");
 var wordsSolnDisplay = document.getElementById("totalwords");
 const root = document.documentElement;
 const purpColor = getComputedStyle(root).getPropertyValue('--accent-purple-dark-mute');
@@ -31,8 +31,6 @@ var puzzleSize = 3; // Change puzzle size to 4x4
 var emptyRow = puzzleSize;
 var emptyCol = puzzleSize;
 
-var timerStarted = false;
-var timerInterval;
 
 // Preload sounds
 //let bgMusic = new Audio('assets/bg.mp3');
@@ -189,6 +187,11 @@ var isPuzzleSolved = function() {
             movesNum++;
         }
 
+        if (movesNum > score) {
+            score = movesNum;
+        }
+
+        scorecell.innerHTML = score;
         movescell.innerHTML = movesNum; // Update # of moves displayed
         wordsSolnDisplay.innerHTML = solnWords2.length;
 
@@ -292,13 +295,10 @@ var randomizePuzzle = function() {
         tile.onclick = moveTile;
     });
 
-    startTime = null; // Reset the start time
-    timerDisplay.innerHTML = "0 seconds"; // Reset the timer display
     movesNum = 0; // Reset the moves count
     movescell.innerHTML = movesNum; // Update the moves count display
     wordsSolnDisplay.innerHTML = ''
-    clearInterval(timerInterval); // Clear any existing timer intervals
-    timerStarted = false; // Reset the timer started flag
+  
 };
 
 // Generate a solvable arrangement of tiles randomly
@@ -366,11 +366,6 @@ var moveTile = function() {
 
         playSound(moveTileSound); // Play move tile sound
 
-        if (!timerStarted) {
-            startTime = new Date(); // Start the timer
-            updateTimer(); // Start updating the timer
-            timerStarted = true; // Set the flag to indicate timer has started
-        }
 
         if (isPuzzleSolved()) {
             showCongratsFrame();
@@ -387,32 +382,23 @@ var showCongratsFrame = function() {
         return; // Exit function if puzzle is not solved
     }
     
-    clearInterval(timerInterval); // Stop the timer
-    var endTime = new Date();
-    var timeDiff = Math.round((endTime - startTime) / 1000); // Time in seconds
+    
     var congratsFrame = document.getElementById("congratsFrame");
     var finalMoves = document.getElementById("finalMoves");
-    var finalTime = document.getElementById("finalTime");
+    
 
     finalMoves.innerHTML = movesNum;
-    finalTime.innerHTML = timeDiff + " seconds";
 
     congratsFrame.style.display = "flex"; // Display the congrats frame
 };
 
 
-// Update the timer every second
-var updateTimer = function() {
-    timerInterval = setInterval(function() {
-        var currentTime = new Date();
-        var elapsedTime = Math.round((currentTime - startTime) / 1000); // Time in seconds
-        timerDisplay.innerHTML = elapsedTime + " seconds";
-    }, 1000);
-};
 
 // Assign event listeners
 document.getElementById("newgame").onclick = function() {
     counting++;
+    score = 0;
+    scorecell.innerHTML = score;
     initPuzzle();
     playSound(buttonPressedSound);
 };
