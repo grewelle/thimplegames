@@ -432,45 +432,36 @@ document.addEventListener("DOMContentLoaded", function() {
     }, { once: true }); // Ensure it runs only once
 });
 
-dragElement(document.getElementById("congratsFrame"));
+const myWindow = document.getElementById("congratsFrame");
+const myWindowHeader = document.getElementById("congratsFrameheader");
+let isDragging = false;
+let offsetX, offsetY;
 
-function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById(elmnt.id + "header")) {
-    /* if present, the header is where you move the DIV from:*/
-    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-  } else {
-    /* otherwise, move the DIV from anywhere inside the DIV:*/
-    elmnt.onmousedown = dragMouseDown;
-  }
-
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
-  }
-
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
-
-  function closeDragElement() {
-    /* stop moving when mouse button is released:*/
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
+function handleStart(e) {
+    isDragging = true;
+    offsetX = (e.type === 'mousedown' ? e.clientX : e.touches[0].clientX) - myWindow.offsetLeft;
+    offsetY = (e.type === 'mousedown' ? e.clientY : e.touches[0].clientY) - myWindow.offsetTop;
 }
+
+function handleMove(e) {
+    if (!isDragging) return;
+    const x = (e.type === 'mousemove' ? e.clientX : e.touches[0].clientX) - offsetX;
+    const y = (e.type === 'mousemove' ? e.clientY : e.touches[0].clientY) - offsetY;
+    myWindow.style.left = x + 'px';
+    myWindow.style.top = y + 'px';
+}
+
+function handleEnd() {
+    isDragging = false;
+}
+
+// Mouse events
+myWindowHeader.addEventListener('mousedown', handleStart);
+document.addEventListener('mousemove', handleMove);
+document.addEventListener('mouseup', handleEnd);
+
+// Touch events
+myWindowHeader.addEventListener('touchstart', handleStart);
+document.addEventListener('touchmove', handleMove);
+document.addEventListener('touchend', handleEnd);
+document.addEventListener('touchcancel', handleEnd); // Optional, for when the touch is interrupted
