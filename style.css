@@ -275,7 +275,7 @@ footer {
     font-size: 0.5rem;
     padding: 0.2rem 0.4rem;
     margin: 0 0.6rem;
-    width: 5%;
+    width: 25%;
     /* Adjusted margin */
   }
 
@@ -355,7 +355,7 @@ footer {
 /* The actual popup (appears on top) */
 .popup .popuptext {
   visibility: hidden;
-  width: 460px;
+  width: 100%;
   background-color: #555;
   color: #fff;
   text-align: center;
