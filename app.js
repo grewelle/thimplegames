@@ -7,8 +7,8 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   
-initial = [['M','A','G','A','I','R','D','D',''], ['M','A','D','A','E','R','E','F',''], ['M','A','D','O','E','B','E','N',''], ['A','B','C','D','E','F','G','H','']];
-end = [['M','A','G','A','I','R','D','D',''], ['M','A','D','A','','E','R','E','F'],['M','A','D','O','','E','B','E','N'], ['A','B','C','D','E','F','G','H','']];
+initial = [['M','A','G','A','I','R','D','D',''], ['M','A','D','A','E','R','E','F',''], ['M','A','D','O','E','B','E','N','']];
+end = [['M','A','G','A','I','R','D','D',''], ['M','A','D','A','','E','R','E','F'],['M','A','D','O','','E','B','E','N']];
 var counting = 0;
 
 

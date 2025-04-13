@@ -276,6 +276,7 @@ footer {
     padding: 0.2rem 0.4rem;
     margin: 0 0.6rem;
     width: 25%;
+    text-align: center;
     /* Adjusted margin */
   }
 
@@ -365,7 +366,7 @@ footer {
   z-index: 1;
   bottom: 125%;
   left: 50%;
-  margin-left: -200px;
+  margin-left: 0px;
 }
 
 /* Popup arrow */
