@@ -275,7 +275,7 @@ footer {
     font-size: 0.5rem;
     padding: 0.2rem 0.4rem;
     margin: 0 0.6rem;
-    width: fit-content;
+    width: 5%;
     /* Adjusted margin */
   }
 
@@ -397,4 +397,12 @@ footer {
   from {opacity: 0;}
   to {opacity:1 ;}
 }
+
+h1 {
+  color:  rgb(207, 93, 222);
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+
 
