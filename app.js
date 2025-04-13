@@ -382,9 +382,10 @@ var showCongratsFrame = function() {
         return; // Exit function if puzzle is not solved
     }
     
-    finalMoves.innerHTML = movesNum;
+    
     var congratsFrame = document.getElementById("congratsFrame");
     var finalMoves = document.getElementById("finalMoves");
+    finalMoves.innerHTML = movesNum;
     
 
     
