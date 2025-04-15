@@ -14,7 +14,7 @@
       <img src="assets/floople2.png" width=8%>
       l o o p l e
     </h1>
-    <h2>your favorite word game's favorite word game</h2>
+    <h2>a thimple game</h2>
   </header>
   <body>
     <div class="SlidingPuzzleContainer">
@@ -26,12 +26,16 @@
       </div>
       <div class="moves">Words: <span id="movesnum">0</span> / <span id="totalwords"></span></div>
         <div class="moves">Score: <span id="score">0</span></div>
+        <label class="switch">
+          <input type="checkbox" id="myCheckbox">
+          <span class="slider round"></span>
+        </label>
         <button type="button" id="newgame">New Game</button>
         <audio id="myAudio" src="assets/bg.mp3" preload="auto">
         </audio>
         <button onClick="togglePlay()">Music</button>
         <button class="popup" onclick="popping()">Directions
-          <span class="popuptext" id="myPopup">The rools are thimple. Moove tiles to the empty space to rearrange the board. A Floople is created when all three letter strings going down or to the right form words. Play!</span>
+          <span class="popuptext" id="myPopup">The rools are thimple. Moove tiles to the empty space to rearrange the board. A Floople is created when all three letter strings going down or to the right form words. Acceptable words are highlighted. Toggle above for easier play that indicates words in the Floople. Go play!</span>
         </button>
    
     <!-- Draggable DIV -->

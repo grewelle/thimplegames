@@ -22,6 +22,7 @@ const purpColor = getComputedStyle(root).getPropertyValue('--accent-purple-dark-
 const darkwhite = getComputedStyle(root).getPropertyValue('--dark-white');
 const midwhite = getComputedStyle(root).getPropertyValue('--mid-white');
 const lightwhite = getComputedStyle(root).getPropertyValue('--light-white');
+const checkbox = document.getElementById('myCheckbox');
 
 
 var tiles = [];
@@ -64,6 +65,7 @@ function initPuzzle() {
     puzzleElement.innerHTML = "";
     tiles = [];
     lightIndices = [];
+    colorIndices = [];
     
     solvey = initial[counting%initial.length];
     //solvey = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
@@ -89,10 +91,11 @@ var isPuzzleSolved = function() {
         soln = end[counting%end.length];
         //soln = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', '']
         const solnWords = [soln[0]+soln[1]+soln[2], soln[3]+soln[4]+soln[5], soln[6]+soln[7]+soln[8], soln[0]+soln[3]+soln[6], soln[1]+soln[4]+soln[7], soln[2]+soln[5]+soln[8], soln[0]+ soln[4]+ soln[8], soln[6]+ soln[4]+ soln[2]];
-        solnWords2 = solnWords.filter(word => word.length === 3);
+        const solnWords2 = solnWords.filter(word => word.length === 3);
         
         var tile = tiles[i];
         lightIndices = [];
+        colorIndices = [];
         //if (soln[i] !== tile.innerHTML){
          //   return false;
         //}
@@ -187,6 +190,57 @@ var isPuzzleSolved = function() {
             movesNum++;
         }
 
+        
+
+        
+            if (checkbox.checked) {
+
+
+                if (solnWords2.includes((p1+p2+p3))) {
+                    colorIndices.push(0);
+                    colorIndices.push(1);
+                    colorIndices.push(2);
+                }
+                if (solnWords2.includes((p4+p5+p6))) {
+                    colorIndices.push(3);
+                    colorIndices.push(4);
+                    colorIndices.push(5);
+                }
+                if (solnWords2.includes((p7+p8+p9))) {
+                    colorIndices.push(6);
+                    colorIndices.push(7);
+                    colorIndices.push(8);
+                }
+                if (solnWords2.includes((p1+p4+p7))) {
+                    colorIndices.push(0);
+                    colorIndices.push(3);
+                    colorIndices.push(6);
+                }
+                if (solnWords2.includes((p2+p5+p8))) {
+                    colorIndices.push(1);
+                    colorIndices.push(4);
+                    colorIndices.push(7);
+                }
+                if (solnWords2.includes((p3+p6+p9))) {
+                    colorIndices.push(2);
+                    colorIndices.push(5);
+                    colorIndices.push(8);
+                }
+                if (solnWords2.includes((p1+p5+p9))) {
+                    colorIndices.push(0);
+                    colorIndices.push(4);
+                    colorIndices.push(8);
+                }
+                if (solnWords2.includes((p7+p5+p3))) {
+                    colorIndices.push(6);
+                    colorIndices.push(4);
+                    colorIndices.push(2);
+                }
+            }
+            else{
+                colorIndices = [];
+            }
+
         if (movesNum > score) {
             score = movesNum;
         }
@@ -194,8 +248,6 @@ var isPuzzleSolved = function() {
         scorecell.innerHTML = score;
         movescell.innerHTML = movesNum; // Update # of moves displayed
         wordsSolnDisplay.innerHTML = solnWords2.length;
-
-        const uniqueArray = [...new Set(lightIndices)];
         
 
         tiles.forEach(tile => {
@@ -247,6 +299,15 @@ var isPuzzleSolved = function() {
             else {
                 tile.style.borderColor = purpColor;
             }
+
+            if (colorIndices.includes(pos)) {
+                tile.style.color = 'gold';
+            }
+            else {
+                tile.style.color = 'white';
+            }
+
+
           });
         
         const tileIndices = [];
@@ -288,10 +349,12 @@ var randomizePuzzle = function() {
     emptyRow = puzzleSize;
     emptyCol = puzzleSize;
     lightIndices = [];
+    colorIndices = [];
 
     // Reassign event listeners after rearranging tiles
     tiles.forEach(function(tile) {
         tile.style.borderColor = purpColor;
+        tile.style.color = 'white';
         tile.onclick = moveTile;
     });
 
