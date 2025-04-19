@@ -330,10 +330,6 @@ footer {
     cursor: pointer;
   }
 
-  #newgame {
-    margin-left: auto;
-    /* Adjusted margin */
-  }
 
   footer {
     position: fixed;
