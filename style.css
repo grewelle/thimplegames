@@ -128,7 +128,7 @@ ul {
 
 button {
   font-size: 1rem;
-  margin: auto;
+  margin: 0.5rem;
   padding: 0.6rem 1rem;
   color: var(--text-light);
   background: var(--accent-green);
@@ -266,7 +266,7 @@ footer {
   }
 
   .controls .newGameButton {
-    margin-left: auto;
+    margin-left: 0.5rem;
   }
 
   .moves,
@@ -274,7 +274,7 @@ footer {
   button {
     font-size: 0.5rem;
     padding: 0.2rem 0.4rem;
-    margin: auto;
+    margin: 0 0.6rem;
     width: 50%;
     text-align: center;
     align-items: center;
