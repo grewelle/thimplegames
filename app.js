@@ -96,6 +96,7 @@ var isPuzzleSolved = function() {
         var tile = tiles[i];
         lightIndices = [];
         colorIndices = [];
+        solnIndices = [];
         //if (soln[i] !== tile.innerHTML){
          //   return false;
         //}
@@ -190,7 +191,50 @@ var isPuzzleSolved = function() {
             movesNum++;
         }
 
-        
+
+
+        if (solnWords2.includes((p1+p2+p3))) {
+            solnIndices.push(0);
+            solnIndices.push(1);
+            solnIndices.push(2);
+        }
+        if (solnWords2.includes((p4+p5+p6))) {
+            solnIndices.push(3);
+            solnIndices.push(4);
+            solnIndices.push(5);
+        }
+        if (solnWords2.includes((p7+p8+p9))) {
+            solnIndices.push(6);
+            solnIndices.push(7);
+            solnIndices.push(8);
+        }
+        if (solnWords2.includes((p1+p4+p7))) {
+            solnIndices.push(0);
+            solnIndices.push(3);
+            solnIndices.push(6);
+        }
+        if (solnWords2.includes((p2+p5+p8))) {
+            solnIndices.push(1);
+            solnIndices.push(4);
+            solnIndices.push(7);
+        }
+        if (solnWords2.includes((p3+p6+p9))) {
+            solnIndices.push(2);
+            solnIndices.push(5);
+            solnIndices.push(8);
+        }
+        if (solnWords2.includes((p1+p5+p9))) {
+            solnIndices.push(0);
+            solnIndices.push(4);
+            solnIndices.push(8);
+        }
+        if (solnWords2.includes((p7+p5+p3))) {
+            solnIndices.push(6);
+            solnIndices.push(4);
+            solnIndices.push(2);
+        }
+        const uniqueSet = new Set(solnIndices);
+        const uniqueSoln = [...uniqueSet];
 
         
             if (checkbox.checked) {
@@ -310,28 +354,15 @@ var isPuzzleSolved = function() {
 
           });
         
-        const tileIndices = [];
-        for (let j = 0; j < soln.length; j++){
-            if (soln[j] === tile.innerHTML){
-                tileIndices.push(j+1);
-            }
+        if (uniqueSoln.length!==8){
+            return false;
         }
-        var expectedPosit = [];
-        for (let k = 0; k<tileIndices.length;k++){
-            expectedRow = Math.ceil(tileIndices[k]/puzzleSize)
-            expectedCol = tileIndices[k]%puzzleSize || puzzleSize
-            expectedPosit.push([expectedRow, expectedCol]);
-        }
-        var currentRow = parseInt(tile.style.gridRow);
-        var currentCol = parseInt(tile.style.gridColumn);
-        var currentPosit = [currentRow, currentCol];
 
-        if (!expectedPosit.some(row => row.length === currentPosit.length && row.every((value, index) => value === currentPosit[index]))){
-            return False;
+        else{
+            return true;
         }
 
     }
-    return true;
 };
 
 
