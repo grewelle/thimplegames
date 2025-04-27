@@ -354,7 +354,7 @@ var isPuzzleSolved = function() {
 
           });
         
-        if (uniqueSoln.length!==8){
+        if (uniqueSoln.length!==8 || movesNum !== solnWords2.length){
             return false;
         }
 

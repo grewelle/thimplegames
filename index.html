@@ -32,7 +32,7 @@
         </label>
         <button id="newgame">New Game</button>
         <button class="popup" onclick="popping()">Directions
-          <span class="popuptext" id="myPopup">The rools are thimple. Moove tiles to the empty space to rearrange the board. A Floople is created when all three letter strings going down or to the right form words. Acceptable words are highlighted. Toggle above for easier play that indicates words in the Floople. Go play!</span>
+          <span class="popuptext" id="myPopup">Move tiles to the empty space to rearrange the board. A Floople is created when all three letter strings going down or to the right form words. Acceptable words are highlighted. Letters part of more words are brighter. Toggle above for easier play that indicates words in the solved Floople with gold letters. Go play!</span>
         </button>
         <audio id="myAudio" src="assets/bg.mp3" preload="auto">
         </audio>
@@ -45,7 +45,7 @@
       <div id="congratsFrameheader">&#x22EE</div>
       <div class="congratsContent">
         <h2>Congratulations!</h2>
-        <p>You got a Floople with all <span id="finalMoves"></span> words.</p>
+        <p>You got a Floople with all <span id="movesnum"></span> words.</p>
         <button type="button" id="playAgain">Play Again</button>
       </div>
     </div>
