@@ -353,15 +353,15 @@ var isPuzzleSolved = function() {
 
 
           });
+        //alert(uniqueSoln.length);
         
         if (uniqueSoln.length!==8 || movesNum !== solnWords2.length){
+        //if (uniqueSoln.length!==8){
             return false;
         }
-
-        else{
+        else {
             return true;
         }
-
     }
 };
 
@@ -473,13 +473,13 @@ var moveTile = function() {
 // Show the congratulations frame
 var showCongratsFrame = function() {
     if (!isPuzzleSolved()) {
+        
         return; // Exit function if puzzle is not solved
     }
     
-    
+ 
     var congratsFrame = document.getElementById("congratsFrame");
-    var finalMoves = document.getElementById("finalMoves");
-    finalMoves.innerHTML = movesNum;
+    
     
 
     
